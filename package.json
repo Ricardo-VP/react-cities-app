@@ -1,0 +1,26 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "daisyui": "^2.24.0",
+    "dotenv": "^16.0.1",
+    "react": "^17.0.2",
+    "react-data-table-component": "^7.5.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.34.2",
+    "react-icons": "^4.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.4",
+    "@vitejs/plugin-react": "^1.0.7",
+    "tailwindcss": "^3.1.8",
+    "vite": "^2.8.0"
+  }
+}
