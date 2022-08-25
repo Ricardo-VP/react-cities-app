@@ -11,7 +11,6 @@ const CitiesPage = () => {
   const [modalDataVisibility, setModalDataVisibility] = useState(false);
   const [response, setResponse] = useState({});
   const [enableFilter, setEnableFilter] = useState(false);
-
   const [cityName, setCityName] = useState(null);
 
   const toggleModalResponseVisibility = () => {
