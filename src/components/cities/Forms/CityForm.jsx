@@ -82,7 +82,7 @@ const CityForm = ({ city, handleSubmitForm, editing, loading }) => {
           </label>
           <input
             type="number"
-            step=".0000001"
+            step="any"
             defaultValue={editing === true ? city.location.latitude : null}
             {...register('cityLocationLatitude', {
               required: true,
@@ -99,7 +99,7 @@ const CityForm = ({ city, handleSubmitForm, editing, loading }) => {
           </label>
           <input
             type="number"
-            step=".0000001"
+            step="any"
             defaultValue={editing === true ? city.location.longitude : null}
             {...register('cityLocationLongitude', {
               required: true,

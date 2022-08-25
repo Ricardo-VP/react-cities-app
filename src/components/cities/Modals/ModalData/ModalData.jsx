@@ -17,8 +17,8 @@ const ModalData = ({
       timezone: data?.cityTimezone,
       population: data?.cityPopulation,
       location: {
-        longitude: data?.cityLocationLongitude,
-        latitude: data?.cityLocationLatitude,
+        longitude: parseFloat(data?.cityLocationLongitude),
+        latitude: parseFloat(data?.cityLocationLatitude),
       },
     }
     await editCity(city._id, cityChanged)

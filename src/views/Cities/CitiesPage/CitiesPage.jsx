@@ -1,33 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import CitiesDataTable from '../../../components/cities/DataTable/CitiesDataTable'
-import CityForm from '../../../components/cities/Forms/CityForm'
-import ModalResponse from '../../../components/cities/Modals/ModalResponse/ModalResponse'
-import { postCity } from '../../../services/cities/CitiesServices'
+import CitiesDataTable from "../../../components/cities/DataTable/CitiesDataTable";
+import CityForm from "../../../components/cities/Forms/CityForm";
+import ModalResponse from "../../../components/cities/Modals/ModalResponse/ModalResponse";
+import { postCity } from "../../../services/cities/CitiesServices";
 
 const CitiesPage = () => {
-  const [modalResponseVisibility, setModalResponselVisibility] = useState(false)
-  const [modalDataVisibility, setModalDataVisibility] = useState(false)
-  const [response, setResponse] = useState({})
-  const [enableFilter, setEnableFilter] = useState(false)
+  const [modalResponseVisibility, setModalResponselVisibility] =
+    useState(false);
+  const [modalDataVisibility, setModalDataVisibility] = useState(false);
+  const [response, setResponse] = useState({});
+  const [enableFilter, setEnableFilter] = useState(false);
 
-  const [cityName, setCityName] = useState(null)
+  const [cityName, setCityName] = useState(null);
 
   const toggleModalResponseVisibility = () => {
-    setModalResponselVisibility((prev) => !prev)
-  }
+    setModalResponselVisibility((prev) => !prev);
+  };
 
   const toggleModalVisibility = () => {
-    setModalDataVisibility((prev) => !prev)
-  }
+    setModalDataVisibility((prev) => !prev);
+  };
 
   const handleResponseChange = (data) => {
-    setResponse(data)
-  }
+    setResponse(data);
+  };
 
   const handleSearch = () => {
-    setEnableFilter((prev) => !prev)
-  }
+    setEnableFilter((prev) => !prev);
+  };
 
   return (
     <div className="text-center m-5 min-h-full">
@@ -71,16 +72,15 @@ const CitiesPage = () => {
       )}
       <CitiesDataTable cityFilter={cityName} enableFilter={enableFilter} />
     </div>
-  )
-}
+  );
+};
 
 const ModalData = ({
-  toggleFetch,
   toggleModalVisibility,
   toggleModalResponseVisibility,
   handleResponseChange,
 }) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (data) => {
     const city = {
@@ -89,25 +89,24 @@ const ModalData = ({
       timezone: data?.cityTimezone,
       population: data?.cityPopulation,
       location: {
-        longitude: data?.cityLocationLongitude,
-        latitude: data?.cityLocationLatitude,
+        longitude: parseFloat(data?.cityLocationLongitude),
+        latitude: parseFloat(data?.cityLocationLatitude),
       },
-    }
-    setLoading(true)
+    };
+    setLoading(true);
     await postCity(city)
       .then((res) => {
         handleResponseChange({
           type: res.type,
           message: res.message,
-        })
-        toggleFetch()
+        });
       })
       .finally(() => {
-        toggleModalVisibility()
-        toggleModalResponseVisibility()
-        setLoading(false)
-      })
-  }
+        toggleModalVisibility();
+        toggleModalResponseVisibility();
+        setLoading(false);
+      });
+  };
 
   return (
     <div>
@@ -133,7 +132,7 @@ const ModalData = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CitiesPage
+export default CitiesPage;
